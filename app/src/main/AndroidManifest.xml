@@ -9,17 +9,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".Login_Activity"
+            android:theme="@style/AppTheme.Dark"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".MainActivity"/>
+
+
         <activity android:name=".My_account" />
         <activity android:name=".My_deals" />
         <activity android:name=".Feedback" />
         <activity android:name=".About_us"></activity>
+
     </application>
 
 </manifest>
