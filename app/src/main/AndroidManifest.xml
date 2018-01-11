@@ -18,7 +18,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".MainActivity"/>
+
+
+        <activity android:name=".My_account" />
+        <activity android:name=".My_deals" />
+        <activity android:name=".Feedback" />
+        <activity android:name=".About_us"></activity>
 
     </application>
 
