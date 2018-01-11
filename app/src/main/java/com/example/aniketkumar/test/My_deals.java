@@ -1,11 +1,9 @@
 package com.example.aniketkumar.test;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -20,7 +18,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
-public class MainActivity extends AppCompatActivity {
+public class My_deals extends AppCompatActivity {
     private NavigationView navigationView;
     private DrawerLayout drawer;
     private View navHeader;
@@ -30,10 +28,6 @@ public class MainActivity extends AppCompatActivity {
     private FloatingActionButton fab;
     private String[] activityTitles;
     private Handler mHandler;
-    // index to identify current nav menu item
-    public static int navItemIndex = 0;
-
-    // tags used to attach the intent
     private static final String TAG_My_ACCOUNT = "my_account";
     private static final String TAG_DEALS = "my_deal";
     private static final String TAG_APP_TUTORIAL = "app_tutorial";
@@ -42,11 +36,13 @@ public class MainActivity extends AppCompatActivity {
     public static String CURRENT_TAG = TAG_My_ACCOUNT;
     private static final String urlNavHeaderBg = "R.drawable.tutorial";
     private static final String urlProfileImg = "R.drawable.account";
+    public static int navItemIndex = 0;
+
     @Override
     protected void onPostResume() {
         super.onPostResume();
         MenuItem mn;
-        mn=navigationView.getMenu().getItem(0);
+        mn=navigationView.getMenu().getItem(2);
         mn.setChecked(true);
 
     }
@@ -55,35 +51,22 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);//For FullScreen
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_my_deals);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         mHandler = new Handler();
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         navigationView = (NavigationView) findViewById(R.id.nav_view);
-        fab = (FloatingActionButton) findViewById(R.id.fab);
-
-        // Navigation view header
         navHeader = navigationView.getHeaderView(0);
         txtName = (TextView) navHeader.findViewById(R.id.name);
         txtWebsite = (TextView) navHeader.findViewById(R.id.website);
         imgNavHeaderBg = (ImageView) navHeader.findViewById(R.id.img_header_bg);
         imgProfile = (ImageView) navHeader.findViewById(R.id.img_profile);
-
-        // load toolbar titles from string resources
-        activityTitles = getResources().getStringArray(R.array.nav_item_activity_titles);
-
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "filter", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
         MenuItem mn;
-        mn=navigationView.getMenu().getItem(0);
+        mn=navigationView.getMenu().getItem(2);
         mn.setChecked(true);
-        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.openDrawer, R.string.closeDrawer) {
+
+        activityTitles = getResources().getStringArray(R.array.nav_item_activity_titles);ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.openDrawer, R.string.closeDrawer) {
 
             @Override
             public void onDrawerClosed(View drawerView) {
@@ -127,15 +110,20 @@ public class MainActivity extends AppCompatActivity {
                 .bitmapTransform(new CircleTransform(this))
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(imgProfile);
-        // showing dot next to logout label
+        // showing dot next to notifications label
         navigationView.getMenu().getItem(4).setActionView(R.layout.menu);
+        MenuItem mn;
+        mn=navigationView.getMenu().getItem(1);
+        mn.setChecked(true);
+
     }
 
 
     private void setUpNavigationView() {
         MenuItem mn;
-        mn=navigationView.getMenu().getItem(0);
+        mn=navigationView.getMenu().getItem(2);
         mn.setChecked(true);
+
         //Setting Navigation View Item Selected Listener to handle the item click of the navigation menu
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
 
@@ -145,42 +133,44 @@ public class MainActivity extends AppCompatActivity {
 
                 //Check to see which item was being clicked and perform appropriate action
                 switch (menuItem.getItemId()) {
+                    //Replacing the main content with ContentFragment Which is our Inbox View;
                     case R.id.nav_home:
-                        navItemIndex = 0;
-                        drawer.closeDrawers();
-                        break;
+                        // navItemIndex = 0;
+                        startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                        finish();
+                        return true;
                     case R.id.nav_account:
-                        navItemIndex = 1;
+                        navItemIndex = 0;
                         CURRENT_TAG = TAG_My_ACCOUNT;
-                        menuItem.setChecked(false);
-                        startActivity(new Intent(MainActivity.this, My_account.class));
+                        startActivity(new Intent(getApplicationContext(), My_account.class));
                         drawer.closeDrawers();
                         return true;
                     case R.id.nav_deals:
-                        navItemIndex = 2;
+                        navItemIndex = 1;
                         CURRENT_TAG = TAG_DEALS;
-                        startActivity(new Intent(MainActivity.this, My_deals.class));
                         drawer.closeDrawers();
-                        return true;
+                        break;
                     case R.id.nav_app_tutorial:
-                        navItemIndex = 3;
+                        navItemIndex = 2;
                         CURRENT_TAG = TAG_APP_TUTORIAL;
-
+                        // startActivity(new Intent(MainActivity.this, AboutUsActivity.class));
+                        //drawer.closeDrawers();
+                        //return true;
                         break;
                     case R.id.nav_logout:
-                        navItemIndex = 4;
+                        navItemIndex = 3;
                         CURRENT_TAG = TAG_LOGOUT;
                         break;
                     case R.id.nav_feedback:
-                        navItemIndex = 5;
+                        navItemIndex = 4;
                         CURRENT_TAG = TAG_FEEDBACK;
-                        startActivity(new Intent(MainActivity.this, Feedback.class));
+                        startActivity(new Intent(getApplicationContext(), Feedback.class));
                         drawer.closeDrawers();
                         return true;
 
                     case R.id.nav_about_us:
                         // launch new intent instead of loading fragment
-                        startActivity(new Intent(MainActivity.this, About_us.class));
+                        startActivity(new Intent(getApplicationContext(), About_us.class));
                         drawer.closeDrawers();
                         return true;
                     default:
@@ -188,11 +178,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 //Checking if the item is in checked state or not, if not make it in checked state
 
-//                if (menuItem.isChecked()) {
-//                    menuItem.setChecked(false);
-//                } else {
-//                    menuItem.setChecked(true);
-//                }
+
                 //menuItem.setChecked(true);
 
 
@@ -202,4 +188,3 @@ public class MainActivity extends AppCompatActivity {
 
     }
 }
-
