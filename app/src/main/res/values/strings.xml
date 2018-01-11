@@ -6,6 +6,7 @@
     <string name="closeDrawer">close_drawer</string>
 
     <!-- Navigation Drawer menu labels -->
+    <string name="nav_my_home">My Home</string>
     <string name="nav_my_account">My Account</string>
     <string name="nav_my_deals">My Deals</string>
     <string name="nav_app_tutorial">App Tutorial</string>
@@ -14,6 +15,7 @@
     <string name="nav_about_us">About Us</string>
     <!-- Toolbar titles when navigation menu item is selected -->
     <string-array name="nav_item_activity_titles">
+        <item>My Home</item>
         <item>My Account</item>
         <item>My Deals</item>
         <item>App Tutorial</item>
