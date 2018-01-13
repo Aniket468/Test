@@ -15,6 +15,7 @@
         android:paddingTop="45dp"
         >
 
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -29,8 +30,8 @@
             <android.support.design.widget.TextInputEditText
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                android:hint="Username"
-                android:id="@+id/user_name"
+                android:hint="Email-Id"
+                android:id="@+id/emailid"
                 />
         </android.support.design.widget.TextInputLayout>
 
@@ -74,6 +75,21 @@
             android:gravity="center_horizontal"
             android:layout_marginBottom="24dp"
             />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/withoutlogin"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/buttonnew"
+                android:text="Continue without login"
+                android:layout_marginTop="35dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+        </RelativeLayout>
     </LinearLayout>
 
 </ScrollView>

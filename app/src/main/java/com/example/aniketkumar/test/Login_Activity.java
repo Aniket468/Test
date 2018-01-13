@@ -13,17 +13,26 @@ import android.widget.Button;
 
 public class Login_Activity extends AppCompatActivity {
 
-    Button login_button;
+    Button login_button,continuewithoutlogin;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
         login_button= (Button) findViewById(R.id.login_press);
-        login_button.setOnClickListener(new View.OnClickListener() {
+        continuewithoutlogin= (Button) findViewById(R.id.withoutlogin);
+        continuewithoutlogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(Login_Activity.this,MainActivity.class);
                 startActivity(intent);
+                finish();
+            }
+        });
+        login_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
             }
         });
     }
