@@ -20,7 +20,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="LOGIN"
+            android:text="Reset"
             android:fontFamily="@font/headline"
             android:textSize="52sp"
             android:gravity="center"
@@ -32,7 +32,7 @@
             <android.support.design.widget.TextInputEditText
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                android:hint="Username"
+                android:hint="Enter Username"
                 android:id="@+id/user_name"
                 />
         </android.support.design.widget.TextInputLayout>
@@ -41,36 +41,26 @@
         <android.support.design.widget.TextInputLayout
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            app:passwordToggleEnabled="true"
-            app:passwordToggleTint="@color/accent">
+            >
 
             <android.support.design.widget.TextInputEditText
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                android:hint="Password"
-                android:id="@+id/password"
-                android:inputType="textPassword"/>
+                android:hint="Enter mobile no."
+                android:id="@+id/mobile"
+                android:inputType="phone"/>
         </android.support.design.widget.TextInputLayout>
 
         <android.support.v7.widget.AppCompatButton
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:text="LOGIN"
+            android:text="RESET"
             android:textSize="26sp"
-            android:id="@+id/login_press"
+            android:id="@+id/reset_press"
             android:layout_marginTop="25dp"
             android:layout_marginBottom="10dp"
             />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Forgot Password"
-            android:textSize="18sp"
-            android:id="@+id/forgot"
-            android:gravity="center"
-            android:layout_marginBottom="24dp"
-            android:textColor="@color/loginPrimary"
-            />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -78,18 +68,18 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Not a member yet. "
+                android:text="Back to "
                 android:textSize="18sp"
                 android:gravity="center_horizontal"
                 android:layout_marginBottom="18dp"
-                android:layout_marginLeft="42dp"
+                android:layout_marginLeft="90dp"
                 />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sign Up"
-                android:id="@+id/sign_link"
+                android:text="Login"
+                android:id="@+id/login_link"
                 android:textSize="18sp"
                 android:textColor="@color/loginPrimary"
                 />
