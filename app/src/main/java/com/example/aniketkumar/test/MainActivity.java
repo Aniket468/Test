@@ -14,6 +14,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -30,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private FloatingActionButton fab;
     private String[] activityTitles;
     private Handler mHandler;
+    private ImageButton imageButton;
     // index to identify current nav menu item
     public static int navItemIndex = 0;
 
@@ -62,16 +65,34 @@ public class MainActivity extends AppCompatActivity {
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         fab = (FloatingActionButton) findViewById(R.id.fab);
-
+        imageButton=(ImageButton)findViewById(R.id.image1);
         // Navigation view header
         navHeader = navigationView.getHeaderView(0);
         txtName = (TextView) navHeader.findViewById(R.id.name);
         txtWebsite = (TextView) navHeader.findViewById(R.id.website);
         imgNavHeaderBg = (ImageView) navHeader.findViewById(R.id.img_header_bg);
         imgProfile = (ImageView) navHeader.findViewById(R.id.img_profile);
+        final EditText editText=(EditText)findViewById(R.id.editText1);
 
         // load toolbar titles from string resources
         activityTitles = getResources().getStringArray(R.array.nav_item_activity_titles);
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            String s1=editText.getText().toString();
+                if(s1.equals(""))
+                {
+                 Snackbar.make(view,"Enter Brand to search",Snackbar.LENGTH_LONG).setAction("Action",null).show();
+                }
+                else
+                {
+                    Intent intent =new Intent(getApplicationContext(),Search_activity.class);
+                    intent.putExtra("search",s1);
+                    startActivity(intent);
+                }
+
+            }
+        });
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
