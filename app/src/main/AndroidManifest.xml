@@ -21,11 +21,12 @@
 
         <activity android:name=".MainActivity"/>
 
-
+        <activity android:name=".Sign_up"
+            android:theme="@style/AppTheme.Dark"/>
         <activity android:name=".My_account" />
         <activity android:name=".My_deals" />
         <activity android:name=".Feedback" />
-        <activity android:name=".About_us"></activity>
+        <activity android:name=".About_us"/>
 
     </application>
 
