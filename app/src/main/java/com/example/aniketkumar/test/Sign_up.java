@@ -8,41 +8,38 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-/**
- * Created by MNNIT on 1/11/2018.
+/** Oncreate
+ * Created by MNNIT on 1/14/2018.
  */
 
-public class Login_Activity extends AppCompatActivity {
+public class Sign_up extends AppCompatActivity {
 
-    Button login_button;
-    TextView sign_up;
-    @Override
+    TextView login;
+    Button sign_up;
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.login);
-        login_button= (Button) findViewById(R.id.login_press);
-        sign_up=findViewById(R.id.sign_link);
+        setContentView(R.layout.sign_up);
+        sign_up= (Button) findViewById(R.id.sign_press);
+        login=findViewById(R.id.login_link);
 
-        //On clicking the login button
-        login_button.setOnClickListener(new View.OnClickListener() {
+        // On clicking the sign up button
+        sign_up.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(Login_Activity.this,MainActivity.class);
+                Intent intent=new Intent(  Sign_up.this,MainActivity.class);
                 startActivity(intent);
                 finish();
             }
         });
 
-
-        //On clicking the sign up link
-        sign_up.setOnClickListener(new View.OnClickListener() {
+        //On clicking the login link
+        login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(Login_Activity.this,Sign_up.class);
+                Intent intent=new Intent(Sign_up.this,Login_Activity.class);
                 startActivity(intent);
                 finish();
             }
         });
     }
-
 }
