@@ -74,7 +74,10 @@
             android:text="Not a member yet? Sign Up"
             android:textSize="18sp"
             android:gravity="center_horizontal"
+            android:textColor="#0606ed"
             android:layout_marginBottom="24dp"
+
+            android:id="@+id/sign"
             />
         <RelativeLayout
             android:layout_width="match_parent"

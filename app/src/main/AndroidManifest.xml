@@ -15,7 +15,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
@@ -23,7 +23,15 @@
         <activity android:name=".My_deals" />
         <activity android:name=".Feedback" />
         <activity android:name=".About_us" />
-        <activity android:name=".Search_activity"></activity>
+        <activity android:name=".Search_activity" />
+        <activity android:name=".WelcomeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Signup"></activity>
     </application>
 
 </manifest>
