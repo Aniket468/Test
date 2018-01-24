@@ -1,6 +1,9 @@
 package com.example.aniketkumar.test;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -14,47 +17,72 @@ import android.widget.TextView;
 
 public class Login_Activity extends AppCompatActivity {
 
+    TextView tv;
+    Button continuewithoutlogin;
+
     Button login_button;
     TextView sign_up;
     TextView forgot;
+
+
+
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    public void onBackPressed() {
+        //  super.onBackPressed();
+
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.MyDialogTheme);
+        builder.setTitle("Warning!!!");
+        builder.setMessage("Are you really want to Exit");
+        builder.setPositiveButton("yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finish();
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        //  AlertDialog alert=builder.create();
+        //alert.show();
+        builder.show();
+    }
+
+
+    @Override
+    protected void onCreate(
+            @Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
         login_button= (Button) findViewById(R.id.login_press);
-        sign_up=findViewById(R.id.sign_link);
-        forgot=findViewById(R.id.forgot);
+
+        tv=findViewById(R.id.sign_link);
+        tv.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
+        tv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(),Signup.class));
+            }
+        });
+        continuewithoutlogin= (Button) findViewById(R.id.withoutlogin);
+        continuewithoutlogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i=new Intent(getApplicationContext(),MainActivity.class);
+                startActivity(i);
+                finish();
+
+            }
+        });
+
 
         //On clicking the login button
-        login_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(Login_Activity.this,MainActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
 
-
-        //On clicking the sign up link
-        sign_up.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(Login_Activity.this,Sign_up.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-
-        //On clicking the forgot password link
-        forgot.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(Login_Activity.this,forgot_pass.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-    }
-
+        }
 }
+
+
+
