@@ -32,8 +32,8 @@
             <android.support.design.widget.TextInputEditText
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                android:hint="Enter Username"
-                android:id="@+id/user_name"
+                android:hint="Enter Email"
+                android:id="@+id/email"
                 />
         </android.support.design.widget.TextInputLayout>
 
