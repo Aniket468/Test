@@ -1,6 +1,7 @@
 package com.example.aniketkumar.test;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -173,6 +174,30 @@ public class My_deals extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(), About_us.class));
                         drawer.closeDrawers();
                         return true;
+
+                    case R.id.nav_rateus:
+                        String url = "https://play.google.com/store/apps/details?id=com.mnnit.athleticmeet&hl=en";
+                        drawer.closeDrawers();
+                        Intent i = new Intent(Intent.ACTION_VIEW);
+                        i.setData(Uri.parse(url));
+                        startActivity(i);
+
+                        return true;
+                    case R.id.nav_share:
+                        try {
+                            Intent i1 = new Intent(Intent.ACTION_SEND);
+                            i1.setType("text/plain");
+                            i1.putExtra(Intent.EXTRA_SUBJECT, "SELL-C");
+                            String sAux = "\nDownload the Sell-C App for Selling and Buying Cycle At MNNIT Campus \n\n";
+                            sAux = sAux + "https://play.google.com/store/apps/details?id=com.mnnit.athleticmeet&hl=en \n\n";
+                            i1.putExtra(Intent.EXTRA_TEXT, sAux);
+                            startActivity(Intent.createChooser(i1, "choose one"));
+                        } catch(Exception e) {
+                            //e.toString();
+                        }
+                        drawer.closeDrawers();
+                        return  true;
+
                     default:
                         navItemIndex = 0;
                 }

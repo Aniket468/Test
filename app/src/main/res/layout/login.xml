@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     >
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -15,7 +14,7 @@
         android:paddingTop="45dp"
         android:focusable="true"
         android:focusableInTouchMode="true"
-        >
+        android:weightSum="1">
 
         <TextView
             android:layout_width="match_parent"
@@ -32,8 +31,9 @@
             <android.support.design.widget.TextInputEditText
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                android:hint="Username"
-                android:id="@+id/user_name"
+                android:hint="Email-Id"
+                android:id="@+id/emailid"
+                android:inputType="textEmailAddress"
                 />
         </android.support.design.widget.TextInputLayout>
 
@@ -71,29 +71,54 @@
             android:layout_marginBottom="24dp"
             android:textColor="@color/loginPrimary"
             />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="18dp"
+            android:layout_marginLeft="42dp"
+            android:gravity="center_horizontal"
+            android:text="Not a member yet. "
+            android:textSize="18sp" />
+
         <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Not a member yet. "
-                android:textSize="18sp"
-                android:gravity="center_horizontal"
-                android:layout_marginBottom="18dp"
-                android:layout_marginLeft="42dp"
-                />
+            android:text="Not a member yet? Sign Up"
+            android:textSize="18sp"
+            android:gravity="center_horizontal"
+            android:textColor="#0606ed"
+            android:layout_marginBottom="24dp"
 
-            <TextView
-                android:layout_width="wrap_content"
+            android:id="@+id/sign"
+            />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/withoutlogin"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:text="Sign Up"
-                android:id="@+id/sign_link"
-                android:textSize="18sp"
-                android:textColor="@color/loginPrimary"
-                />
-        </LinearLayout>
+                android:background="@drawable/buttonnew"
+                android:text="Continue without login"
+                android:layout_marginTop="35dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/sign_link"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sign Up"
+            android:textColor="@color/loginPrimary"
+            android:textSize="18sp"
+            android:layout_weight="0.59" />
+
     </LinearLayout>
 
 </ScrollView>
