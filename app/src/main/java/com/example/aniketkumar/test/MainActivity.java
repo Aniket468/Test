@@ -1,7 +1,11 @@
 package com.example.aniketkumar.test;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -14,6 +18,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -33,6 +38,9 @@ public class MainActivity extends AppCompatActivity {
     private String[] activityTitles;
     private Handler mHandler;
     private ImageButton imageButton;
+    private  Button sell;
+    int log;
+    SharedPreferences sp;
     // index to identify current nav menu item
     public static int navItemIndex = 0;
 
@@ -54,6 +62,34 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+    @Override
+    public void onBackPressed() {
+        //  super.onBackPressed();
+
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.MyDialogTheme);
+        builder.setTitle("Warning!!!");
+        builder.setMessage("Are you really want to Exit");
+        builder.setPositiveButton("yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finish();
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        //  AlertDialog alert=builder.create();
+        //alert.show();
+        builder.show();
+    }
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);//For FullScreen
@@ -73,6 +109,31 @@ public class MainActivity extends AppCompatActivity {
         imgNavHeaderBg = (ImageView) navHeader.findViewById(R.id.img_header_bg);
         imgProfile = (ImageView) navHeader.findViewById(R.id.img_profile);
         final EditText editText=(EditText)findViewById(R.id.editText1);
+        sell=findViewById(R.id.sell_button);
+        sell.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sp=getApplicationContext().getSharedPreferences("login",MODE_PRIVATE);
+                log=sp.getInt("successful",0);
+                if(log==1)
+                {
+                    startActivity(new Intent(getApplicationContext(),Login_Activity.class));
+                    finish();
+                }
+                else
+                {
+                 startActivity(new Intent(getApplicationContext(),Selling_Activity.class));
+                }
+            }
+        });
+
+
+
+
+
+
+
+
 
         // load toolbar titles from string resources
         activityTitles = getResources().getStringArray(R.array.nav_item_activity_titles);
@@ -205,6 +266,28 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(new Intent(MainActivity.this, About_us.class));
                         drawer.closeDrawers();
                         return true;
+                    case R.id.nav_rateus:
+                        String url = "https://play.google.com/store/apps/details?id=com.mnnit.athleticmeet&hl=en";
+                        Intent i = new Intent(Intent.ACTION_VIEW);
+                        i.setData(Uri.parse(url));
+                        drawer.closeDrawers();
+                        startActivity(i);
+                        return true;
+                    case R.id.nav_share:
+                        try {
+                            Intent i1 = new Intent(Intent.ACTION_SEND);
+                            i1.setType("text/plain");
+                            i1.putExtra(Intent.EXTRA_SUBJECT, "SELL-C");
+                            String sAux = "\nDownload the Sell-C App for Selling and Buying Cycle At MNNIT Campus \n\n";
+                            sAux = sAux + "https://play.google.com/store/apps/details?id=com.mnnit.athleticmeet&hl=en \n\n";
+                            i1.putExtra(Intent.EXTRA_TEXT, sAux);
+                            startActivity(Intent.createChooser(i1, "choose one"));
+                        } catch(Exception e) {
+                            //e.toString();
+                        }
+                        drawer.closeDrawers();
+                        return  true;
+
                     default:
                         navItemIndex = 0;
                 }

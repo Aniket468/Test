@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     >
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -13,13 +12,15 @@
         android:paddingLeft="45dp"
         android:paddingRight="45dp"
         android:paddingTop="45dp"
-        >
-
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:weightSum="1">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="LOGIN"
+            android:fontFamily="@font/headline"
             android:textSize="52sp"
             android:gravity="center"
             android:layout_marginBottom="25dp"
@@ -65,10 +66,24 @@
             android:layout_height="wrap_content"
             android:text="Forgot Password"
             android:textSize="18sp"
+            android:id="@+id/forgot"
             android:gravity="center"
             android:layout_marginBottom="24dp"
+            android:textColor="@color/loginPrimary"
             />
+
         <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="18dp"
+            android:layout_marginLeft="42dp"
+            android:gravity="center_horizontal"
+            android:text="Not a member yet. "
+            android:textSize="18sp" />
+
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Not a member yet? Sign Up"
@@ -94,6 +109,16 @@
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true" />
         </RelativeLayout>
+
+        <TextView
+            android:id="@+id/sign_link"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sign Up"
+            android:textColor="@color/loginPrimary"
+            android:textSize="18sp"
+            android:layout_weight="0.59" />
+
     </LinearLayout>
 
 </ScrollView>
